@@ -1,10 +1,11 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
 
 class FirstLab {
 
-    private int[][] array;
+    private double[][] array;
     private int n;
     private int m;
 
@@ -19,7 +20,7 @@ class FirstLab {
         System.out.println("Enter m value: ");
         m = Integer.parseInt(reader.readLine());
 
-        array = new int[n][n];
+        array = new double[n][n];
 
 
         fulfillArray();
@@ -32,14 +33,16 @@ class FirstLab {
     private void fulfillArray() {
         for (int i = 0; i < this.array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
-                array[i][j] = (int) (Math.random() * 10);
+                double toAdd = Math.random() * 10;
+                toAdd = Double.parseDouble(new DecimalFormat("#.#").format(toAdd));
+                array[i][j] = (toAdd);
             }
         }
     }
 
-    private void printArray(int[][] array) {
-        for (int[] anArray : array) {
-            for (int anAnArray : anArray) {
+    private void printArray(double [][] array) {
+        for (double[] anArray : array) {
+            for (double anAnArray : anArray) {
                 System.out.print(anAnArray + " ");
             }
             System.out.println();
@@ -49,11 +52,11 @@ class FirstLab {
     }
 
     private void shiftArrayOnce() {
-        int[] temp = array[array.length - 1];
+        double[] temp = array[array.length - 1];
 
         for(int i = array.length - 1; i > 0; i--){
 
-            array[i]=array[i-1];   // do the switch
+            array[i] = array[i - 1];   // do the switch
 
         }
 
